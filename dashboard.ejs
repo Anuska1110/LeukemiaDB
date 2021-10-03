@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>dashboard</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:ital@1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Ubuntu:ital@1&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles.css">
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <section id="title">
+    <div class="container-fluid">
+      <!-- Nav Bar -->
+
+
+      <ul class="nav justify-content-end nav-tabs heading">
+        <li class="nav-item">
+          <a class="nav-link active" href="/home">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dataset</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/genes">Leukemia Genes</a>
+            <a class="dropdown-item" href="/drugs">Leukemia Drugs</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/dashboard">Patients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/logout">Logout</a>
+            <!-- <a href="/logout">Logout</a> -->
+        </li>
+      </ul>
+
+
+
+
+      <!-- Title -->
+
+      <div class="row">
+        <div class="col-lg-6">
+
+          <h1 class="big-heading">PATIENT DASHBOARD:</h1>
+          <!-- <button type="button" class="btn btn-dark btn-lg download-button">Login</button> -->
+          <!-- <button type="button" class="btn btn-outline-light btn-lg download-button">Sign Up</button> -->
+          <h4>The details of the patients and its analysis:</h4>
+
+
+
+          <!-- <a class="nav-link" href="#tables1"><button type="button" class="btn btn-dark btn-md download-button">Genes sorted in alphabetical order </button></a>
+          <a class="nav-link" href="#tables2"><button type="button" class="btn btn-outline-light btn-md download-button">Genes sorted on chromosome number</button></a>
+          <a class="nav-link" href="#tables3"><button type="button" class="btn btn-dark btn-md download-button">Genes based on leukemic types</button></a> -->
+        </div>
+        <div class="col-lg-6">
+          <!-- <img class="title-image" src="images/health3.jfif" alt="image" width="600" height="440"> -->
+        </div>
+      </div>
+  </section>
+  <section id="pat" style="padding: 7% 25%;">
+<h5>Details of the patient:</h5>
+
+    <p>Name:  <%=user.name%>:</p>
+    <p>Age:  <%=user.age %></p>
+    <p>Username:  <%=user.username %></p>
+
+<h5>Previous months Parameters:</h5>
+    <% for(let i=0;i<record.length;i++){%>
+      <div class="">
+        <h6>Month <%= (i+1)%>:</h6>
+        <p>Leukocyte Count: <%= record[i].a %></p>
+        <p>Platelet Count: <%= record[i].b %></p>
+        <p>RBC Count: <%= record[i].c %></p>
+        <hr>
+      </div>
+    <%}%>
+<h5>Add this Month's Report Result:</h5>
+    <form class="" action="/dashboard" method="post">
+      <input type="text" placeholder="Leukocyte Count" name="a" value="">
+      <input type="text" placeholder="Platelet Count" name="b" value="">
+      <input type="text" placeholder="RBC Count" name="c" value="">
+      <!-- <button type="submit" name="button">Submit</button> -->
+      <button type="submit" name="button" class="btn btn-danger btn-lg" style="padding: 1% 9%; margin:3% 25%;">Submit</button>
+    </form>
+
+    <!-- <a href="/logout">Logout</a> -->
+  </section>
+  </body>
+</html>
